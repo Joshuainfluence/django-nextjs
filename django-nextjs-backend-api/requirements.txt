@@ -1,0 +1,4 @@
+Django
+django-ninja
+rav
+# installed django and django-ninja, started project cfehome
