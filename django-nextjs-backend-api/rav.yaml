@@ -1,0 +1,3 @@
+rav:
+  scripts:
+    migrate: "python src/manage.py migrate"
