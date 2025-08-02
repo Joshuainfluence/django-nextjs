@@ -1,4 +1,5 @@
 Django
 django-ninja
+django-ninja-jwt[crypto]
 rav
 # installed django and django-ninja, started project cfehome

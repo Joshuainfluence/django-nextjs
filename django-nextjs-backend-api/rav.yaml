@@ -1,3 +1,11 @@
-rav:
-  scripts:
-    migrate: "python src/manage.py migrate"
+# scripts:
+#   migrate: "python src/manage.py migrate"
+scripts:
+  server:
+    - cd src && python manage.py runserver 8000
+  migration:
+    - cd src && python manage.py makemigrations
+  migrate:
+    - cd src && python manage.py migrate
+  curl_auth:
+    curl -X POST -H "Content-Type: application/json" -d '{"username": "hp", "password": "influence"}' http://127.0.0.1:8000/api/token/pair
