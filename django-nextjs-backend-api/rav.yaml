@@ -7,5 +7,23 @@ scripts:
     - cd src && python manage.py makemigrations
   migrate:
     - cd src && python manage.py migrate
+  # curl_auth: |
+  #   curl -X POST -H "Content-Type: application/json" -d '{"username": "hp", "password": "influence"}' http://127.0.0.1:8000/api/token/pair
+  # curl_auth: |
+  #   Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/token/pair" `
+  # -Method POST `
+  # -Headers @{ "Content-Type" = "application/json" } `
+  # -Body '{"username": "hp", "password": "influence"}'
+  # curl_auth: |
+  #   Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/token/pair" `
+  #     -Method POST `
+  #     -Headers @{ "Content-Type" = "application/json" } `
+  #     -Body '{"username": "hp", "password": "influence"}'
   curl_auth: |
-    curl -X POST -H "Content-Type: application/json" -d '{"username": "hp", "password": "influence"}' http://127.0.0.1:8000/api/token/pair
+    curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"hp\", \"password\": \"influence\"}" http://127.0.0.1:8000/api/token/pair
+  curl_protect: |
+    curl -X GET -H "Authorization: Bearer <curl_auth-access-token>" http://127.0.0.1:8000/api/me
+
+  # curl_protect: |
+  #   curl -X POST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDUxMzc4LCJpYXQiOjE3NTU0NTEwNzgsImp0aSI6ImE0YTE2ZmI0OGYzOTRjNjM5MWQyZjBhOWE1MmM5YjBmIiwidXNlcl9pZCI6MX0.mOo8U5Fie7vg-xClmrnJt1j2yfCCpNGAeBAkgDBHlbw" '{\"username\": \"hp\", \"password\": \"influence\"}' http://127.0.0.1:8000/api/me
+ 

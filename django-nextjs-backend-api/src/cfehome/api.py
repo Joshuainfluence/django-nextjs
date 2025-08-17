@@ -20,6 +20,9 @@ def hello(request):
     print(request)
     return("Hello world!")  
 
-@api.get("me", response=UserSchema, auth=JWTAuth())
+@api.get("/me", 
+         response=UserSchema, 
+        #  same as login required
+         auth=JWTAuth())
 def me(request):
     return request.user
