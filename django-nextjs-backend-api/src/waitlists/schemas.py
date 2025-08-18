@@ -21,4 +21,5 @@ class WaitlistEntryDetailSchema(Schema):
     # WaitlistEntryOut
     id: int
     email: EmailStr
+    updated : datetime
     timestamp: datetime  # ISO 8601 format, e.g., "2023-10-01T12:00:00Z
