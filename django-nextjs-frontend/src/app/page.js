@@ -1,9 +1,22 @@
+"use client";
 import Image from "next/image";
 
 export default function Home() {
+  async function getDjangoAPIdata() {
+    const response = await fetch("http://127.0.0.1:8000/api/hello")
+    const data = await response.json()
+    console.log(data)
+  }
+
+  async function handleClick() {
+    await getDjangoAPIdata()
+  }
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <button onClick={handleClick}>
+          Lookup data
+        </button>
         <Image
           className="dark:invert"
           src="/next.svg"
