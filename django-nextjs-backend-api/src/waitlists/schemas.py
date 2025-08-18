@@ -2,10 +2,18 @@ from ninja import Schema
 from datetime import datetime, timedelta
 from pydantic import EmailStr
 
+
 class WaitlistEntryCreateSchema(Schema):
     # Create -> Data
     # WaitlistEntryIn
-    email: EmailStr 
+    email: EmailStr
+
+
+class WaitlistEntryListSchema(Schema):
+    # List -> Data
+    # WaitlistEntryOut
+    id: int
+    email: EmailStr
 
 
 class WaitlistEntryDetailSchema(Schema):
