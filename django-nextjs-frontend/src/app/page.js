@@ -3,12 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Home(){
-  const [dataStr, setDataStr] = useState('')
+  const [data, setData] = useState({})
   async function getDjangoAPIdata() {
     const response = await fetch("http://127.0.0.1:8000/api/hello")
-    const data = await response.json()
-    console.log(data)
-    setDataStr(JSON.stringify(data))
+    const responseData = await response.json()
+    // console.log(data)
+    setData(responseData)
   }
 
   async function handleClick() {
@@ -21,7 +21,7 @@ export default function Home(){
           Lookup data
         </button>
         <div>
-          {dataStr}
+          {JSON.stringify(data)}
         </div>
         <Image
           className="dark:invert"
