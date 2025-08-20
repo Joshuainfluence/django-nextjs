@@ -1,25 +1,32 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import useSWR from "swr";
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home(){
-  const [data, setData] = useState({})
-  async function getDjangoAPIdata() {
-    const response = await fetch("http://127.0.0.1:8000/api/hello")
-    const responseData = await response.json()
-    // console.log(data)
-    setData(responseData)
-  }
+  // for get requests
+  const {data, error, isLoading} = useSWR("http://127.0.0.1:8000/api/hello", fetcher)
 
-  async function handleClick() {
-    await getDjangoAPIdata()
-  }
+  if (error) return <div>Error</div>
+  if(isLoading) return <div>Loading...</div>
+  // const [data, setData] = useState({})
+  // async function getDjangoAPIdata() {
+  //   const response = await fetch("http://127.0.0.1:8000/api/hello")
+  //   const responseData = await response.json()
+  //   // console.log(data)
+  //   setData(responseData)
+  // }
+
+  // async function handleClick() {
+  //   await getDjangoAPIdata()
+  // }
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <button onClick={handleClick}>
+        {/* <button onClick={handleClick}>
           Lookup data
-        </button>
+        </button> */}
         <div>
           {JSON.stringify(data)}
         </div>
