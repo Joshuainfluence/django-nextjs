@@ -1,11 +1,14 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 
-export default function Home() {
+export default function Home(){
+  const [dataStr, setDataStr] = useState('')
   async function getDjangoAPIdata() {
     const response = await fetch("http://127.0.0.1:8000/api/hello")
     const data = await response.json()
     console.log(data)
+    setDataStr(JSON.stringify(data))
   }
 
   async function handleClick() {
@@ -17,6 +20,9 @@ export default function Home() {
         <button onClick={handleClick}>
           Lookup data
         </button>
+        <div>
+          {dataStr}
+        </div>
         <Image
           className="dark:invert"
           src="/next.svg"
