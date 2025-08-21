@@ -1,6 +1,8 @@
 "use client"
 // -> url -> /login
-const LOGIN_URL = "http://127.0.0.1:8000/api/token/pair"
+// const LOGIN_URL = "http://127.0.0.1:8000/api/token/pair"
+const LOGIN_URL = "/api/login"
+
 export default function Page() {
 
    async function handleSubmit(event) {
@@ -25,6 +27,8 @@ export default function Page() {
             console.log("Logged in")
         }
     }
+
+    // localStorage.setItem('token', 'influencebad')
     return <div className="h-[95vh]">
         <div className="py-5 max-w-md mx-auto">
             <h1> Login here</h1>
